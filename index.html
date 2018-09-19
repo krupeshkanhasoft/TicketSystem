@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="no-js h-100" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Ticket Management</title>
+        <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" id="main-stylesheet" data-version="1.0.0" href="styles/shards-dashboards.1.0.0.min.css">
+        <link rel="stylesheet" href="styles/extras.1.0.0.min.css">
+        <script src="scripts/jquery.min.js"></script>
+        <script src="scripts/jquery.validate.js"></script>        
+        <script src="scripts/angular/angular.min.js"></script>
+        <script src="scripts/angular/angular-route.min.js"></script>
+        <script src="scripts/angular/angular-cookies.min.js"></script>
+        <script src="scripts/angular/angular-ui-router.js"></script>
+        <script src="scripts/angular/app.js"></script>        
+        <script src="scripts/angular/Directive/directive.js"></script>
+        <script src="scripts/angular/Service/service.js"></script> 
+        <script src="scripts/angular/Controller/userController.js"></script>
+        <script src="scripts/angular/Controller/ticketController.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+        <link rel="stylesheet" href="styles/comments.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+        <style>
+            .middle{margin-left: 10% !important;}
+        </style>
+    </head>
+    <body class="h-100" ng-app="myapp">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Main Sidebar -->
+                <div ng-if="!is_login" sidebar></div>
+                <!-- End Main Sidebar -->
+                <!-- Main Container -->
+                <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3 {{is_login ? 'middle' : ''}}">
+                    <!-- Header -->
+                    <div class="main-navbar sticky-top bg-white" header></div>
+                    <!-- End Header -->
+                    <!-- Main Content -->
+                    <div class="main-content-container container-fluid px-4" ui-view></div>
+                    <!-- End Main Content -->
+                    <!-- Footer -->
+                    <div footer></div>
+                    <!-- End Footer -->
+                </main>
+                <!-- End Main Container -->
+            </div>
+        </div>
+    </body>
+</html>

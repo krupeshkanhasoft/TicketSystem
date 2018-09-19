@@ -1,0 +1,46 @@
+<script>
+    $().ready(function () {
+        $("#login_form").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                    minlength: 3
+                },
+            },
+            messages: {
+                email: "Please enter a valid email address",
+                password: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 3 characters long"
+                }
+            }
+        });
+    });
+
+</script>  
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <h3 class="page-title">Login</h3>
+    </div>
+</div>
+<!-- End Page Header -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- Add New Post Form -->
+        <div class="card card-small mb-3">
+            <div class="card-body">
+                <form class="add-new-post" id="login_form">
+                    <input name="email" ng-model="email" class="form-control form-control-lg mb-3" type="email" placeholder="Email" required="true">
+                    <input name="password" ng-model="password" class="form-control form-control-lg mb-3" type="password" placeholder="Password" required="true">
+                    <button class="btn btn-sm btn-accent ml-auto" type="button" ng-click="userLogin()">Login</button> 
+                </form>
+            </div>
+        </div>
+        <!-- / Add New Post Form -->
+    </div>
+</div>  

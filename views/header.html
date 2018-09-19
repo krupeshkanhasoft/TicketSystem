@@ -1,0 +1,32 @@
+<!-- Main Navbar -->
+<nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
+    <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
+        <span class="copyright mr-2 mt-4 ml-3" ng-if="is_login"><a href="#" rel="nofollow">Ticket Management</a></span>
+    </form>
+    <ul class="navbar-nav border-left flex-row ">
+        <li class="nav-item dropdown" ng-if="userdata !== ''">
+            <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="true" aria-expanded="false">
+                <strong>Hi</strong>
+                <span class="d-none d-md-inline-block" ng-if="userdata !== ''">{{userdata.email}}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-small">
+                <a class="dropdown-item" href="#/create-ticket">
+                    <i class="material-icons">note_add</i> Add New Ticket</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger" href="javascript:void(0);" ng-click="logout();" ng-if="userdata !== ''">
+                    <i class="material-icons text-danger">&#xE879;</i> Logout </a>
+            </div>
+        </li>
+        <li class="nav-item dropdown" ng-if="userdata == ''">
+            <a class="nav-link text-nowrap px-3" aria-haspopup="true" aria-expanded="false" href="#/login">
+                <strong>Login</strong>
+            </a>
+        </li>
+    </ul>
+    <nav class="nav">
+        <a href="#" class="nav-link nav-link-icon toggle-sidebar d-md-inline d-lg-none text-center border-left" data-toggle="collapse" data-target=".header-navbar" aria-expanded="false" aria-controls="header-navbar">
+            <i class="material-icons">&#xE5D2;</i>
+        </a>
+    </nav>
+</nav>
+<!-- / .main-navbar -->

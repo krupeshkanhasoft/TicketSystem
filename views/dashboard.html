@@ -1,0 +1,104 @@
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Dashboard</span>
+    </div>
+</div>
+<!-- End Page Header -->
+<div class="row">
+    <!-- Discussions Component -->
+    <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+        <div class="card card-small blog-comments">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Tickets</h6>
+            </div>
+            <div class="card-body p-0">
+                <div class="blog-comments__item d-flex p-3" ng-repeat="ticket in TicketList">
+                    <div class="blog-comments__content col-12">
+                        <div class="blog-comments__meta text-muted">
+                            <div class="dropdown float-right">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="javascript:void(0)" ng-click="EditTicket(ticket.id);">Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0)" ng-hide="ticket.status.id == 1" ng-click="update_status(ticket.id, 1)">Mark as Open</a>
+                                    <a class="dropdown-item" href="javascript:void(0)" ng-hide="ticket.status.id == 2" ng-click="update_status(ticket.id, 2)">Mark as In Progress</a>
+                                    <a class="dropdown-item" href="javascript:void(0)" ng-hide="ticket.status.id == 3" ng-click="update_status(ticket.id, 3)">Mark as Completed</a>
+                                    <a class="dropdown-item" href="javascript:void(0)" ng-hide="ticket.status.id == 4" ng-click="update_status(ticket.id, 4)">Mark as Rejected</a>
+                                    <a class="dropdown-item" href="javascript:void(0)" ng-click="addCommentModal(ticket.id);">Add Comment</a>
+                                    <a class="dropdown-item" href="javascript:void(0)" ng-click="delete_ticket(ticket.id)">Delete</a>
+                                </div>
+                            </div>
+                            <div class="pull-left">
+                                <div class="pull-left p-l-0">
+                                    {{ticket.subject}}
+                                    <a href="javascript:void(0)" class="card-post__category badge badge-pill badge-{{ticket.urgency.id}}">{{ ticket.urgency.name}}</a>&nbsp;
+                                    <a href="javascript:void(0)" class="card-post__category badge badge-pill badge-{{ticket.tickettype.id}}">{{ ticket.tickettype.name}}</a>&nbsp;
+                                    <a href="javascript:void(0)" class="card-post__category badge badge-pill badge-{{ticket.status.id}}">{{ ticket.status.name}}</a>
+                                </div>
+                            </div>
+                            <div class="pull-left p-l-0 pb-2">
+                                {{ticket.name}}
+                                &nbsp;
+                                <a class="text-secondary" href="javascript:void(0)">{{ticket.email}}</a>
+                            </div>
+                        </div>
+                        <p class="card-text d-inline-block mb-3">{{ticket.message}}</p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <!-- End Discussions Component -->
+</div>
+<div class="modal fade in display_none" id="EditNoteModal" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-theme">
+                <h4 class="modal-title" id="modal_title">Ticket Comments</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <section class="comments" id="CommentsSection" ng-if="Ticket.comments.length > 0">
+                    <article class="comment" ng-repeat="ticket_comment in Ticket.comments">
+                        <a class="comment-img" href="#non">
+                            <img src="#" alt="" width="50" height="50">
+                        </a>
+                        <div class="comment-body">
+                            <div class="text">
+                                <p>{{ticket_comment.comment}}</p>
+                            </div>
+                            <p class="attribution">by <a href="#non">{{ticket_comment.user.username}}</a></p>
+                        </div>
+                    </article>
+                </section>
+                <form id="submit_comment"> 
+                    <div class="col-md-12">
+                        <input type="hidden" name="ticket_id" id="ticket_id" ng-model="Ticket.ticketid" />
+                        <textarea class="form-control form-control-lg mb-3" placeholder="comment" name="comment" required="true" ng-model="Ticket.comment"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-rounded" aria-hidden="true" ng-click="saveComment()" id="save_comment">Save</button>
+                <button type="button" class="btn btn-default btn-rounded" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $().ready(function () {
+        $("#submit_comment").validate({
+            rules: {
+                comment: {
+                    required: true,
+                },
+            },
+            messages: {
+                comment: "Please enter comment"
+            }
+        });
+    });
+</script>

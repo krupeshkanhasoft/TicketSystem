@@ -1,0 +1,77 @@
+<script>
+    $.validator.setDefaults({
+        submitHandler: function () {
+            alert("submitted!");
+        }
+    });
+
+    $().ready(function () {
+        $("#submit_ticket").validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                },
+                subject: {
+                    required: true,
+                },
+                urgency: {
+                    required: true,
+                },
+                type: {
+                    required: true,
+                },
+                message: {
+                    required: true,
+                },
+            },
+            messages: {
+                name: "Please enter name",
+                email: "Please enter a valid email address",
+                subject: "Please enter subject",
+                urgency: "Please select urgency",
+                type: "Please select type",
+                message: "Please enter message"
+            }
+        });
+    });
+
+</script>
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Tickets</span>
+        <h3 class="page-title">Submit New Ticket</h3>
+    </div>
+</div>
+<!-- End Page Header -->
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- Add New Post Form -->
+        <div class="card card-small mb-3">
+            <div class="card-body">
+                <form class="add-new-post" id="submit_ticket">
+                    <input class="form-control form-control-lg mb-3" type="text" placeholder="Name" name="name" required="true" ng-model="Ticket.name">
+                    <input class="form-control form-control-lg mb-3" type="text" placeholder="Email" name="email" required="true" ng-model="Ticket.email">
+                    <input class="form-control form-control-lg mb-3" type="text" placeholder="Subject" name="subject" required="true" ng-model="Ticket.subject">
+                    <select class="form-control form-control-lg mb-3" name="urgency" required="true" ng-model="Ticket.urgency">
+                        <option value="">-Urgency-</option>
+                        <option ng-repeat="urgency_item in urgency" value="{{urgency_item.id}}">{{urgency_item.name}}</option>
+                    </select>
+                    <select class="form-control form-control-lg mb-3" name="type" required="true" ng-model="Ticket.type">
+                        <option value="">-Type-</option>
+                        <option ng-repeat="type_item in type" value="{{type_item.id}}">{{type_item.name}}</option>
+                    </select>
+                    <textarea class="form-control form-control-lg mb-3" placeholder="Message" name="message" required="true" ng-model="Ticket.message"></textarea>
+                    <button class="btn btn-sm btn-accent ml-auto" type="button" ng-click="CreateGuestTicket();">
+                        <i class="material-icons">save</i> Save</button>
+                    <button class="btn btn-sm btn-outline-accent" type="button">
+                        <i class="material-icons">clear</i> Clear</button>                    
+                </form>
+            </div>
+        </div>
+        <!-- / Add New Post Form -->
+    </div>
+</div>
